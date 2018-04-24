@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import include
 from django.contrib import admin
-from django.urls import path
+from django.conf.urls import url
 
 urlpatterns = [
+<<<<<<< HEAD
     path('admin/', admin.site.urls),
     path('', include('freezer.urls')),
+=======
+    url(r'^admin/', admin.site.urls),
+>>>>>>> 92f895c389688bfd15bb9eed754df2033746d4e2
 ]
