@@ -6,14 +6,14 @@
     
         <div class="post">
             <div class="col-sm">
-                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title|capfirst }}</a></h1>                
-            </div>
-
-            <div class="col-sm">
                 <div class="date">
-                    {{ post.get_where_display }}<br>
-                    Expires: {{ post.expires_date }}
+                    {{ post.published_date }}
                 </div>
+            </div>
+            
+            <div class="col-sm">
+                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                <p>{{ post.text|linebreaksbr }}</p>
             </div>
         </div>
   

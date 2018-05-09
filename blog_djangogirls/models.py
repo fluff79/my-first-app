@@ -26,14 +26,18 @@ class Item(models.Model):
 
 	author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
 	title = models.CharField("food", max_length=100)
+	text = models.TextField()
 	item_type = models.IntegerField(choices = TYPES, default = 1)
 	added_date = models.DateField("date added", default=datetime.date.today)
 	where = models.IntegerField(choices = FREEZER_DRAWERS, default = 1)
 	expires_date = models.DateField(default = datetime.date.today)
 
-#	def publish(self):
-#		self.published_date = timezone.now()
-#		self.save()
+	published_date = models.DateTimeField(
+            blank=True, null=True)
+
+	def publish(self):
+		self.published_date = timezone.now()
+		self.save()
 
 	def __str__(self):
 		return self.title

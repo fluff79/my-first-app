@@ -5,4 +5,4 @@ class ItemForm(forms.ModelForm):
 
     class Meta:
         model = Item
-        fields = ('title', 'item_type', 'where', 'expires_date')
+        fields = ('title', 'text',)
