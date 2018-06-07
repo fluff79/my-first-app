@@ -1,41 +1,44 @@
                 
-{% extends 'freezer/post_base.html' %}
+{% extends 'freezer/shopping_list_base.html' %}
 
 {% block content %}
 
 <div class="d-flex">  
         
     <div class="p-2 mr-auto ">
-        <h1><strong>Freezer list</strong></h1>
+        <h1><strong>Shopping list</strong></h1>
     </div>
 
     <div class="p-2 ">
         {% if user.is_authenticated %}            
-            <h1><a href="{% url 'shopping_list' %}"> <i class="fas fa-shopping-cart"></i></a>
+            <h1><a href="{% url 'post_list' %}"><i class="far fa-snowflake"></i></a>
             </h1>
         {% endif %} 
     </div>
 
     <div class="p-2 ">
         {% if user.is_authenticated %}            
-            <h1><a href="{% url 'post_new' %}"> <i class="fas fa-plus"></i></a>
+            <h1>
+                <a href="{% url 'shopping_list_new' %}" ><i class="fas fa-plus"></i></a>
             </h1>
         {% endif %} 
     </div>
-   
+       
 </div>
 
 <div class="d-flex p-2 flex-column">  
         
-    {% for post in posts %}
-        <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title|capfirst }}</a></h1>                
-
+    {% for item in shopping_list_items %}
+        <h1><a href="{% url 'shopping_list_detail' pk=item.pk %}">{{ item.title|capfirst }}</a></h1>
         <div class="date">
-            {{ post.get_where_display }}<br>
-            Expires: {{ post.expires_date }}
+
         </div>
     {% endfor %}
-       
+    
+
 </div>
 
+
+
 {% endblock %}
+

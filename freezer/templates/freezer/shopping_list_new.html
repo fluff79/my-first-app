@@ -1,7 +1,7 @@
-{% extends 'freezer/post_base.html' %}
+{% extends 'freezer/shopping_list_base.html' %}
 
 {% block content %}
-    <h1>Edit item</h1>
+    <h1>Add to shopping list</h1>
     <div class = "row fullWidth">               
         <form method = "POST" class = "post-form"> {% csrf_token %}
             {{ form.as_p }}

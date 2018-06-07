@@ -1,0 +1,32 @@
+{% extends 'freezer/shopping_list_base.html' %}
+
+{% block content %}
+
+    <div class="post">
+        
+        <h1>{{ shopping_list_item.title|capfirst }}
+            
+            {% if user.is_authenticated %}
+                <a class="btn btn-default" href="{% url 'shopping_list_edit' pk=shopping_list_item.pk %}"><i class="far fa-edit"></i></a>
+                <a class="btn btn-default" href="{% url 'shopping_list_remove' pk=shopping_list_item.pk %}"><i class="fas fa-minus"></i></a>
+
+            {% endif %}
+
+        </h1>
+
+        <div class="date">
+            {{ shopping_list_item.get_where_display }}<br>
+            Expires: {{ shopping_list_item.expires_date }}<br>
+
+            {% if shopping_list_item.on_shopping_list %}
+                <font color = "green">On shopping list</font>
+            {% endif %}
+        </div>
+
+        <div>
+            <a class="btn btn-back" href="{% url 'post_list' %}"><i class="far fa-snowflake"></i></a>
+            <a class="btn btn-back" href="{% url 'shopping_list' %}"> <i class="fas fa-shopping-cart"></i></a>
+        </div>
+
+    </div>
+{% endblock %}

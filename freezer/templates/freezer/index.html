@@ -1,0 +1,35 @@
+                
+{% extends 'freezer/post_base.html' %}
+
+{% block content %}
+<div class="d-flex">  
+        
+        <div class="p-2 mr-auto ">
+            <h1><a href="{% url 'post_list' %}">Freezer</a></h1>
+        </div>
+
+        <div class="p-2 ">
+            {% if user.is_authenticated %}            
+                <h1><a href="{% url 'post_new' %}"><i class="fas fa-plus"></i></a></h1>
+            {% endif %} 
+        </div>
+       
+</div>
+    
+<div class="d-flex">  
+        
+        <div class="p-2 mr-auto ">
+            <h1><a href="{% url 'shopping_list' %}">Shops</a>
+        </div>
+
+        <div class="p-2 ">
+            {% if user.is_authenticated %}            
+                <h1><a href="{% url 'shopping_list_new' %}"><i class="fas fa-plus"></i></a></h1>
+            {% endif %} 
+        </div>
+       
+</div>
+
+
+  
+{% endblock %}

@@ -14,6 +14,7 @@ class Item(models.Model):
 			(7, 'Utility: 3rd drawer'),
 			(8, 'Utility: 4th drawer'),
 			(9, 'Utility: 5th drawer'),
+			(10, 'None'),
 			)
 			
 	TYPES = (
@@ -30,7 +31,7 @@ class Item(models.Model):
 	added_date = models.DateField("date added", default=datetime.date.today)
 	where = models.IntegerField(choices = FREEZER_DRAWERS, default = 1)
 	expires_date = models.DateField(default = datetime.date.today)
-
+	on_shopping_list = models.BooleanField()
 #	def publish(self):
 #		self.published_date = timezone.now()
 #		self.save()
@@ -38,4 +39,7 @@ class Item(models.Model):
 	def __str__(self):
 		return self.title
 
-# Create your models here.
+class Shopping_list(models.Model):
+	author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+	title = models.CharField("food", max_length=100)
+	added_date = models.DateField("date added", default=datetime.date.today)

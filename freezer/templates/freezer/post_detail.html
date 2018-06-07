@@ -1,21 +1,32 @@
-{% extends 'freezer/base.html' %}
+{% extends 'freezer/post_base.html' %}
 
 {% block content %}
+
     <div class="post">
         
-
-
         <h1>{{ post.title|capfirst }}
+            
             {% if user.is_authenticated %}
                 <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><i class="far fa-edit"></i></a>
                 <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><i class="fas fa-minus"></i></a>
+
             {% endif %}
 
         </h1>
 
         <div class="date">
             {{ post.get_where_display }}<br>
-            Expires: {{ post.expires_date }}
+            Expires: {{ post.expires_date }}<br>
+
+            {% if post.on_shopping_list %}
+                <font color = "green">On shopping list</font>
+            {% endif %}
         </div>
+
+        <div>
+            <a class="btn btn-back" href="{% url 'post_list' %}"><i class="far fa-snowflake"></i></a>
+            <a class="btn btn-back" href="{% url 'shopping_list' %}"> <i class="fas fa-shopping-cart"></i></a>
+        </div>
+
     </div>
 {% endblock %}
